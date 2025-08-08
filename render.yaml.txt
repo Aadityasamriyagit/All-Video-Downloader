@@ -1,0 +1,20 @@
+# This file tells Render how to build and run your web service.
+# For more details, see: https://render.com/docs/yaml-spec
+
+services:
+  # A Web Service for our Flask application
+  - type: web
+    # A unique name for the service
+    name: video-downloader
+    # The runtime environment for the service
+    env: python
+    # The version of Python to use
+    pythonVersion: "3.11"
+    # The plan for this service (free is perfect for this project)
+    plan: free
+    # Commands to build the service
+    buildCommand: "pip install -r requirements.txt"
+    # Command to start the web server
+    startCommand: "gunicorn app:app"
+    # A health check to make sure the service is running
+    healthCheckPath: /
